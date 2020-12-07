@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<item android:title="Add Book" android:id="@+id/addBookAdmin"/>
+<item android:title="List Book" android:id="@+id/listBookAdmin"/>
+<item android:title="Book booked" android:id="@+id/bookBookedAdmin"/>
+<item android:title="Search book" android:id="@+id/searchBookAdmin"/>
+<item android:title="Logout" android:id="@+id/logoutAdmin"/>
+</menu>
