@@ -22,15 +22,15 @@ public class BookController implements Book {
     // Chức năng lấy mọi sách
     @Override
     public List<com.example.mobiletbcn.model.Book> getAllBook() {
-        Cursor cursor = database.getData("SELECT id, name, image, price, author FROM Book");
+        Cursor cursor = database.getData("SELECT id, name, image, quantity, author FROM Book");
         List<com.example.mobiletbcn.model.Book> bookList = new ArrayList<>();
         while (cursor.moveToNext()) {
             com.example.mobiletbcn.model.Book book = new com.example.mobiletbcn.model.Book();
             book.setId(cursor.getInt(0));
             book.setName(cursor.getString(1));
             book.setImage(cursor.getBlob(2));
-            book.setPrice(cursor.getString(3));
             book.setAuthor(cursor.getString(4));
+            book.setQuantity(cursor.getString(3));
             bookList.add(book);
         }
         return bookList;
@@ -52,10 +52,9 @@ public class BookController implements Book {
             book.setId(cursor.getInt(0));
             book.setName(cursor.getString(1));
             book.setImage(cursor.getBlob(2));
-            book.setPrice(cursor.getString(3));
-            book.setAuthor(cursor.getString(4));
-            book.setDescription(cursor.getString(5));
-            book.setQuantity(cursor.getString(6));
+            book.setAuthor(cursor.getString(3));
+            book.setDescription(cursor.getString(4));
+            book.setQuantity(cursor.getString(5));
         }
         return book;
     }
@@ -82,10 +81,9 @@ public class BookController implements Book {
             book.setId(cursor.getInt(0));
             book.setName(cursor.getString(1));
             book.setImage(cursor.getBlob(2));
-            book.setPrice(cursor.getString(3));
-            book.setAuthor(cursor.getString(4));
-            book.setDescription(cursor.getString(5));
-            book.setQuantity(cursor.getString(6));
+            book.setAuthor(cursor.getString(3));
+            book.setDescription(cursor.getString(4));
+            book.setQuantity(cursor.getString(5));
             bookList.add(book);
         }
         return bookList;
@@ -104,10 +102,9 @@ public class BookController implements Book {
             book.setId(cursor.getInt(0));
             book.setName(cursor.getString(1));
             book.setImage(cursor.getBlob(2));
-            book.setPrice(cursor.getString(3));
-            book.setAuthor(cursor.getString(4));
-            book.setDescription(cursor.getString(5));
-            book.setQuantity(cursor.getString(6));
+            book.setAuthor(cursor.getString(3));
+            book.setDescription(cursor.getString(4));
+            book.setQuantity(cursor.getString(5));
             bookList.add(book);
         }
         return bookList;

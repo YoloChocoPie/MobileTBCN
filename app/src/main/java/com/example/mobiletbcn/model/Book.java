@@ -4,7 +4,7 @@ public class Book {
     private int id;
     private String name;
     private byte[] image;
-    private String price;
+
     private String author;
     private String description;
     private String quantity;
@@ -13,11 +13,11 @@ public class Book {
     }
 
 
-    public Book(int id, String name, byte[] image, String price, String author, String description, String quantity) {
+    public Book(int id, String name, byte[] image, String author, String description, String quantity) {
         this.id = id;
         this.name = name;
         this.image = image;
-        this.price = price;
+
         this.author = author;
         this.description = description;
         this.quantity = quantity;
@@ -47,13 +47,7 @@ public class Book {
         this.image = image;
     }
 
-    public String getPrice() {
-        return price;
-    }
 
-    public void setPrice(String price) {
-        this.price = price;
-    }
 
     public String getAuthor() {
         return author;

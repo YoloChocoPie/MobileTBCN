@@ -23,20 +23,18 @@ public class BookingController implements Booking {
 
     @Override
     public List getAllBookOfUserBooking(int idUserBooking) {
-        Cursor cursor = database.getData("SELECT Booking.id, User.id, Book.id, Book.name, Book.image, Book.price, Book.quantity" +
+        Cursor cursor = database.getData("SELECT Booking.id, User.id, Book.id, Book.name, Book.image, Book.quantity" +
                 " FROM User INNER JOIN Booking ON Booking.idUser_Booking = User.id " +
                 "INNER JOIN Book ON Book.id = Booking.idBook_Booking WHERE User.id = " + idUserBooking);
         List<com.example.mobiletbcn.model.Booking> list = new ArrayList();
         while (cursor.moveToNext()) {
             User user = new User();
             user.setId(cursor.getInt(1));
-
             Book book = new Book();
             book.setId(cursor.getInt(2));
             book.setName(cursor.getString(3));
             book.setImage(cursor.getBlob(4));
-            book.setPrice(cursor.getString(5));
-            book.setQuantity(cursor.getString(6));
+            book.setQuantity(cursor.getString(5));
 
             com.example.mobiletbcn.model.Booking booking = new com.example.mobiletbcn.model.Booking();
             booking.setId(cursor.getInt(0));

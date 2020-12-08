@@ -34,13 +34,12 @@ public class Database extends SQLiteOpenHelper {
     // crud data
     public void insertDataHasImage(Book book) {
         SQLiteDatabase database = getWritableDatabase();
-        String sql = "INSERT INTO Book VALUES(NULL, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO Book VALUES(NULL, ?, ?, ?, ?, ?)";
         SQLiteStatement sqLiteStatement = database.compileStatement(sql);
         sqLiteStatement.clearBindings();
 
         sqLiteStatement.bindString(1, book.getName());
         sqLiteStatement.bindBlob(2, book.getImage());
-        sqLiteStatement.bindString(3, book.getPrice());
         sqLiteStatement.bindString(4, book.getAuthor());
         sqLiteStatement.bindString(5, book.getDescription());
         sqLiteStatement.bindString(6, book.getQuantity());
@@ -50,14 +49,13 @@ public class Database extends SQLiteOpenHelper {
 
     public void UpdateDataHasImage(Book book) {
         SQLiteDatabase database = getWritableDatabase();
-        String sql = "UPDATE Book SET name = ?, image = ?, price = ?, author = ?, description = ?, quantity = ? " +
+        String sql = "UPDATE Book SET name = ?, image = ?, author = ?, description = ?, quantity = ? " +
                 "WHERE id = ?";
         SQLiteStatement sqLiteStatement = database.compileStatement(sql);
         sqLiteStatement.clearBindings();
 
         sqLiteStatement.bindString(1, book.getName());
         sqLiteStatement.bindBlob(2, book.getImage());
-        sqLiteStatement.bindString(3, book.getPrice());
         sqLiteStatement.bindString(4, book.getAuthor());
         sqLiteStatement.bindString(5, book.getDescription());
         sqLiteStatement.bindString(6, book.getQuantity());
