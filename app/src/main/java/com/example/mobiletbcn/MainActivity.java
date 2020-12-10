@@ -63,8 +63,8 @@ public class MainActivity extends AppCompatActivity {
         boolean checkUser = userController.checkUserByUserNameAndPassword(us, pass);
         if (checkUser) {
             // thành công thì chuyển sang trang home
-            //Intent intent = new Intent(MainActivity.this, HomeMain.class);
-            //startActivity(intent);
+            Intent intent = new Intent(MainActivity.this, Home_screen.class);
+            startActivity(intent);
         } else {
             // thất bại
             Toast.makeText(this, "Wrong username and password", Toast.LENGTH_SHORT).show();
