@@ -8,4 +8,12 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+   <!-- &lt;!&ndash; Navigation style &ndash;&gt;
+    <style name="navigationTheme">
+        &lt;!&ndash; color of text and icon when select &ndash;&gt;
+        <item name="android:textColor">#FF6E6E</item>
+        &lt;!&ndash; color of background when select &ndash;&gt;
+        <item name="background">#FFDFDF</item>
+    </style>-->
+
 </resources>
