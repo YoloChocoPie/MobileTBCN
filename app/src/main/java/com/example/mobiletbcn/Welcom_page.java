@@ -38,7 +38,8 @@ public class Welcom_page extends AppCompatActivity {
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent = new Intent(Welcom_page.this, SignUpActivity.class);
+                startActivity(intent);
             }
         });
 

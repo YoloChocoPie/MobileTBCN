@@ -33,6 +33,16 @@ public class UserController implements User {
     }
 
     @Override
+    public void addnewuser(com.example.mobiletbcn.model.User user) {
+
+    }
+
+    @Override
+    public void updateuser(com.example.mobiletbcn.model.User user) {
+
+    }
+
+    @Override
     public boolean checkUserByUserNameAndPassword(String userName, String password) {
         Cursor cursor = database.getData("SELECT * FROM User WHERE userName = '" + userName +"' AND password = '" + password + "'");
         com.example.mobiletbcn.model.User user = new com.example.mobiletbcn.model.User();
