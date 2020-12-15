@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar">
-        <activity android:name=".Welcom_page"></activity>
+        <activity android:name=".SignUpActivity"></activity>
+        <activity android:name=".Welcom_page" />
         <activity android:name=".MainActivity" />
         <activity android:name=".SplashScreen">
             <intent-filter>
@@ -17,9 +18,11 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-<!--        <activity android:name=".HomeMain" />-->
-        <activity android:name=".Home_screen"></activity>
+        </activity> <!-- <activity android:name=".HomeMain" /> -->
+        <activity android:name=".Home_screen" />
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>
