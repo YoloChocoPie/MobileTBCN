@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:checked="false"
+            android:icon="@drawable/home_icon"
+            android:title="Home" />
+
+        <item
+            android:id="@+id/nav_profile"
+            android:title="Profile"
+            android:icon="@drawable/profile_ic"/>
+
+        <item
+            android:id="@+id/nav_search"
+            android:title="Search"
+            android:icon="@drawable/search_icon_nav"/>
+
+        <item
+            android:id="@+id/nav_cate"
+            android:title="Categories"
+            android:icon="@drawable/category_icon"/>
+
+    </group>
+
+
+    <item android:title="Manage" android:id="@+id/mangae_gr" android:visible="true" >
+
+        <menu>
+
+            <group android:checkableBehavior="single" >
+                <item
+                    android:id="@+id/nav_addbook"
+                    android:title="Add book"
+                    android:icon="@drawable/add_icon"/>
+
+                <item
+                    android:id="@+id/nav_editrole"
+                    android:title="Edit account's role"
+                    android:icon="@drawable/edit_icon"/>
+
+                <item
+                    android:id="@+id/nav_list"
+                    android:title="Account list"
+                    android:icon="@drawable/listuser_icon"/>
+            </group>
+
+        </menu>
+
+    </item>
+
+
+    <item android:title="Setting">
+
+        <menu>
+
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/nav_language"
+                    android:title="Language"
+                    android:icon="@drawable/language_icon"/>
+
+                <item
+                    android:id="@+id/nav_Policy"
+                    android:title="Privacy Policy"
+                    android:icon="@drawable/policy_icon"/>
+
+                <item
+                    android:id="@+id/nav_logout"
+                    android:title="Log out"
+                    android:icon="@drawable/logout_icon"/>
+            </group>
+
+        </menu>
+
+    </item>
+
+</menu>
