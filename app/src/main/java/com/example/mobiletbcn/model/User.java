@@ -6,6 +6,7 @@ public class User {
     private String role;
     private String userName;
     private String password;
+    private String cfpass;
     private int idBooking_User;
 
     public int getId() {
@@ -32,6 +33,8 @@ public class User {
         this.role = role;
     }
 
+
+
     public String getUserName() {
         return userName;
     }
@@ -48,6 +51,14 @@ public class User {
         this.password = password;
     }
 
+    public String getcfpass() {
+        return cfpass;
+    }
+
+    public void setcfpass(String cfpass) {
+        this.cfpass = cfpass;
+    }
+
     public int getIdBooking_User() {
         return idBooking_User;
     }
@@ -55,4 +66,6 @@ public class User {
     public void setIdBooking_User(int idBooking_User) {
         this.idBooking_User = idBooking_User;
     }
+
+
 }
