@@ -6,10 +6,9 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.database.sqlite.SQLiteStatement;
 
-import androidx.annotation.Nullable;
-
 import com.example.mobiletbcn.model.Book;
-import com.example.mobiletbcn.model.User;
+
+import androidx.annotation.Nullable;
 
 public class Database extends SQLiteOpenHelper {
     public Database(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
@@ -44,38 +43,6 @@ public class Database extends SQLiteOpenHelper {
         sqLiteStatement.bindString(4, book.getAuthor());
         sqLiteStatement.bindString(5, book.getDescription());
         sqLiteStatement.bindString(6, book.getQuantity());
-
-        sqLiteStatement.executeInsert();
-    }
-
-    public void addnewuser(User user) {
-        SQLiteDatabase database = getWritableDatabase();
-        String sql = "INSERT INTO User VALUES(NULL, ?, ?, ?, ?,?)";
-        SQLiteStatement sqLiteStatement = database.compileStatement(sql);
-        sqLiteStatement.clearBindings();
-
-        sqLiteStatement.bindString(1, user.getFullName());
-        sqLiteStatement.bindString(2, user.getRole());
-        sqLiteStatement.bindString(3, user.getUserName());
-        sqLiteStatement.bindString(4, user.getPassword());
-        sqLiteStatement.bindString(5, user.getcfpass());
-
-        sqLiteStatement.executeInsert();
-    }
-
-    public void updateuser(User user) {
-        SQLiteDatabase database = getWritableDatabase();
-        String sql = "UPDATE Book SET FullName = ?, Role = ?, UserName = ?, Password = ?, cfpass = ? " +
-                "WHERE id = ?";
-        SQLiteStatement sqLiteStatement = database.compileStatement(sql);
-        sqLiteStatement.clearBindings();
-
-        sqLiteStatement.bindString(1, user.getFullName());
-        sqLiteStatement.bindString(2, user.getRole());
-        sqLiteStatement.bindString(3, user.getUserName());
-        sqLiteStatement.bindString(4, user.getPassword());
-        sqLiteStatement.bindString(5, user.getcfpass());
-        sqLiteStatement.bindLong(6, user.getId());
 
         sqLiteStatement.executeInsert();
     }
