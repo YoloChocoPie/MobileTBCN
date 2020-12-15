@@ -11,8 +11,19 @@ import java.util.List;
 public class UserController implements User {
     Database database;
 
+
     public UserController(Database database) {
         this.database = database;
+    }
+
+    @Override
+    public void addnewuser(com.example.mobiletbcn.model.User user) {
+        database.addnewuser(user);
+    }
+
+    @Override
+    public void updateuser(com.example.mobiletbcn.model.User user) {
+        database.updateuser(user);
     }
 
     @Override
@@ -32,15 +43,9 @@ public class UserController implements User {
         return list;
     }
 
-    @Override
-    public void addnewuser(com.example.mobiletbcn.model.User user) {
 
-    }
 
-    @Override
-    public void updateuser(com.example.mobiletbcn.model.User user) {
 
-    }
 
     @Override
     public boolean checkUserByUserNameAndPassword(String userName, String password) {
@@ -52,6 +57,7 @@ public class UserController implements User {
             user.setRole(cursor.getString(2));
             user.setUserName(cursor.getString(3));
             user.setPassword(cursor.getString(4));
+            user.setcfpass(cursor.getString(5));
         }
         if (user.getId() != 0) {
             KeepInformation.setIdUser(user.getId());
