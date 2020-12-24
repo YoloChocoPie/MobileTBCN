@@ -1,20 +1,20 @@
 package com.example.mobiletbcn;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.mobiletbcn.Controller.BookController;
 
 public class Welcom_page extends AppCompatActivity {
 
-    Button btnLogin,btnRegister,btnExit;
-    ImageView imageView;
-    TextView name,quote;
+    Button btnLogin,btnRegister;
+    BookController bookController;
+    Database database;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +22,24 @@ public class Welcom_page extends AppCompatActivity {
         setContentView(R.layout.activity_welcom_page);
 
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+        database = new Database(this, "ManagementBook.sqlite", null, 1);
+        bookController = new BookController(database);
+
+        /*database.queryData("DROP TABLE Book");
+        database.queryData("DROP TABLE IF EXISTS User");
+        database.queryData("DROP TABLE Booking");*/
+
+        database.queryData("CREATE TABLE IF NOT EXISTS Book (id INTEGER PRIMARY KEY AUTOINCREMENT, name VARCHAR(200), " +
+                "author VARCHAR(200), price VARCHAR(100), quantity INTEGER(100), image BLOB, description VARCHAR(200))");
+        database.queryData("CREATE TABLE IF NOT EXISTS User (id INTEGER PRIMARY KEY AUTOINCREMENT, fullName VARCHAR(200), " +
+                "role VARCHAR(20), userName VARCHAR(100), password VARCHAR(100), cfpass VARCHAR(100))");
+        database.queryData("CREATE TABLE IF NOT EXISTS Booking (id INTEGER PRIMARY KEY AUTOINCREMENT, idUser_Booking INTEGER(100), " +
+                "idBook_Booking INTEGER(100))");
+
+
+        database.queryData("INSERT INTO User VALUES (NULL, 'Lương Triễn Cường', 'admin', 'admin', 'admin', 'admin')");
+        //database.queryData("INSERT INTO User VALUES (NULL, 'Nam', 'user', 'nam', '123', '123')");
 
         btnLogin = findViewById(R.id.btnLogin);
         btnRegister = findViewById(R.id.btnRegister);

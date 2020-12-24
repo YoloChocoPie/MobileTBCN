@@ -1,12 +1,5 @@
 package com.example.mobiletbcn;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
@@ -15,14 +8,17 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.text.Html;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mobiletbcn.HomeAdapter.FeatureAdapter;
 import com.example.mobiletbcn.HomeAdapter.FeatureHelperClass;
@@ -63,7 +59,7 @@ public class Home_screen extends AppCompatActivity implements NavigationView.OnN
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
 
-        if (KeepInformation.getRole().toUpperCase().equals("ADMIN")) {
+       if (KeepInformation.getRole().equals("admin")) {
             navigationView.getMenu().findItem(R.id.mangae_gr).setVisible(true);
         } else {
             navigationView.getMenu().findItem(R.id.mangae_gr).setVisible(false);
@@ -118,7 +114,7 @@ public class Home_screen extends AppCompatActivity implements NavigationView.OnN
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         final Intent intent;
-        if (KeepInformation.getRole().toUpperCase().equals("ADMIN")) {
+        if (KeepInformation.getRole().equals("admin")) {
             switch (item.getItemId()) {
                 case R.id.nav_addbook:
                     intent = new Intent(this, Add_Book.class);
@@ -153,7 +149,7 @@ public class Home_screen extends AppCompatActivity implements NavigationView.OnN
 
                 case R.id.nav_logout:
                     //KeepInformation.setIdUser(0);
-                    //KeepInformation.setRole("");
+                    KeepInformation.setRole("ADMIN");
 
                     intent = new Intent(this, MainActivity.class);
                     AlertDialog.Builder mydialog=new
@@ -250,15 +246,14 @@ public class Home_screen extends AppCompatActivity implements NavigationView.OnN
         return super.onOptionsItemSelected(item);
     }
 
-    public void ShowAll(View v) {
-        Intent intent = new Intent(this,List_all_book.class);
+    public void ShowAll(View view) {
+        Intent intent = new Intent(this,ListBook_frame.class);
         startActivity(intent);
     }
 
     public void Dimiss(View view) {
         mydialog.dismiss();
     }
-
 
     }
 
