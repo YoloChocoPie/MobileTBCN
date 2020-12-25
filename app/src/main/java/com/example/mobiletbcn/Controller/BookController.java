@@ -22,15 +22,17 @@ public class BookController implements Book {
     // Chức năng lấy mọi sách
     @Override
     public List<com.example.mobiletbcn.model.Book> getAllBook() {
-        Cursor cursor = database.getData("SELECT id, name, image, quantity, author FROM Book");
+        Cursor cursor = database.getData("SELECT id, name, author, type, quantity,  image, description FROM Book");
         List<com.example.mobiletbcn.model.Book> bookList = new ArrayList<>();
         while (cursor.moveToNext()) {
             com.example.mobiletbcn.model.Book book = new com.example.mobiletbcn.model.Book();
-            book.setId(cursor.getInt(0));
-            book.setName(cursor.getString(1));
-            book.setImage(cursor.getBlob(2));
-            book.setAuthor(cursor.getString(4));
-            book.setQuantity(cursor.getString(3));
+            book.setId(cursor.getInt(cursor.getColumnIndex("id")));
+            book.setName(cursor.getString(cursor.getColumnIndex("name")));
+            book.setAuthor(cursor.getString(cursor.getColumnIndex("author")));
+            book.setType(cursor.getString(cursor.getColumnIndex("type")));
+            book.setQuantity(cursor.getString(cursor.getColumnIndex("quantity")));
+            book.setImage(cursor.getBlob(cursor.getColumnIndex("image")));
+            book.setDescription(cursor.getString(cursor.getColumnIndex("description")));
             bookList.add(book);
         }
         return bookList;
@@ -51,10 +53,12 @@ public class BookController implements Book {
         while (cursor.moveToNext()) {
             book.setId(cursor.getInt(0));
             book.setName(cursor.getString(1));
-            book.setImage(cursor.getBlob(2));
-            book.setAuthor(cursor.getString(3));
-            book.setDescription(cursor.getString(4));
-            book.setQuantity(cursor.getString(5));
+            book.setAuthor(cursor.getString(2));
+            book.setType(cursor.getString(3));
+            book.setQuantity(cursor.getString(4));
+            book.setImage(cursor.getBlob(5));
+            book.setDescription(cursor.getString(6));
+
         }
         return book;
     }
@@ -80,10 +84,11 @@ public class BookController implements Book {
             com.example.mobiletbcn.model.Book book = new com.example.mobiletbcn.model.Book();
             book.setId(cursor.getInt(0));
             book.setName(cursor.getString(1));
-            book.setImage(cursor.getBlob(2));
-            book.setAuthor(cursor.getString(3));
-            book.setDescription(cursor.getString(4));
-            book.setQuantity(cursor.getString(5));
+            book.setAuthor(cursor.getString(2));
+            book.setType(cursor.getString(3));
+            book.setQuantity(cursor.getString(4));
+            book.setImage(cursor.getBlob(5));
+            book.setDescription(cursor.getString(6));
             bookList.add(book);
         }
         return bookList;
@@ -101,10 +106,12 @@ public class BookController implements Book {
             com.example.mobiletbcn.model.Book book = new com.example.mobiletbcn.model.Book();
             book.setId(cursor.getInt(0));
             book.setName(cursor.getString(1));
-            book.setImage(cursor.getBlob(2));
-            book.setAuthor(cursor.getString(3));
-            book.setDescription(cursor.getString(4));
-            book.setQuantity(cursor.getString(5));
+            book.setAuthor(cursor.getString(2));
+            book.setType(cursor.getString(3));
+            book.setQuantity(cursor.getString(4));
+            book.setImage(cursor.getBlob(5));
+            book.setDescription(cursor.getString(6));
+
             bookList.add(book);
         }
         return bookList;
