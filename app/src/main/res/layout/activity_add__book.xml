@@ -30,7 +30,8 @@
         android:text="Book's name:"
         android:layout_below="@id/back_icon"
         android:layout_toRightOf="@id/imageAdd"
-        android:layout_marginTop="15dp"/>
+        android:layout_marginTop="15dp"
+        android:textSize="15sp"/>
 
     <EditText
         android:id="@+id/nameBookAdd"
@@ -39,14 +40,16 @@
         android:layout_toRightOf="@id/imageAdd"
         android:layout_marginTop="30dp"
         android:layout_below="@id/back_icon"
-        android:layout_marginLeft="-10dp"/>
+        android:layout_marginLeft="-10dp"
+        android:inputType="text"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Author's name: "
         android:layout_below="@id/nameBookAdd"
-        android:layout_toRightOf="@id/imageAdd"/>
+        android:layout_toRightOf="@id/imageAdd"
+        android:textSize="15sp"/>
 
     <EditText
         android:id="@+id/nameAuthorAdd"
@@ -55,7 +58,8 @@
         android:layout_toRightOf="@id/imageAdd"
         android:layout_marginTop="15dp"
         android:layout_below="@id/nameBookAdd"
-        android:layout_marginLeft="-10dp"/>
+        android:layout_marginLeft="-10dp"
+        android:inputType="text"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -78,7 +82,8 @@
         android:layout_height="wrap_content"
         android:text="Quantity: "
         android:layout_below="@id/typeBookAdd"
-        android:layout_toRightOf="@id/imageAdd"/>
+        android:layout_toRightOf="@id/imageAdd"
+        android:textSize="15sp"/>
 
     <EditText
         android:id="@+id/quantityAdd"
@@ -88,28 +93,51 @@
         android:layout_marginTop="15dp"
         android:layout_below="@id/typeBookAdd"
         android:layout_marginLeft="-10dp"
-        android:inputType="number"/>
+        android:inputType="text"/>
+
 
     <Button
         android:id="@+id/select_image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/quantityAdd"
+        android:layout_marginLeft="-10dp"
+        android:layout_marginTop="-3dp"
+        android:layout_toRightOf="@id/imageAdd"
         android:backgroundTint="@android:color/black"
         android:text="Select Image"
         android:textColor="#FFC200"
-        android:layout_below="@id/quantityAdd"
-        android:layout_toRightOf="@id/imageAdd"
-        android:layout_marginLeft="-10dp"/>
+        android:onClick="SelectImageToPhone"/>
+
 
     <Button
+        android:id="@+id/btn_addbook"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/Maincolor"
         android:text="Add book"
         android:layout_below="@id/select_image"
         android:layout_toRightOf="@id/imageAdd"
-        android:layout_marginLeft="-10dp"/>
+        android:layout_marginLeft="-10dp"
+        android:onClick="buttonAddBook"/>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/imageAdd"
+        android:text="Description"
+        android:textSize="18sp"
+        android:layout_marginLeft="15dp"/>
+
+    <EditText
+        android:id="@+id/descriptionAdd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="description of book here"
+        android:layout_below="@id/imageAdd"
+        android:layout_marginTop="25dp"
+        android:layout_marginLeft="15dp"
+        android:inputType="text"/>
 
 
 </RelativeLayout>
