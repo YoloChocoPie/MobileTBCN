@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Search_Book">
+
+    <Button
+        android:id="@+id/back_icon"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/ic_baseline_arrow_back_24"
+        app:backgroundTint="@color/colorPrimaryDark"
+        app:iconTint="@android:color/black" />
+
+    <RelativeLayout
+        android:id="@+id/rl_search"
+        android:layout_width="match_parent"
+        android:layout_height="130dp"
+        android:layout_below="@id/back_icon"
+        android:layout_marginTop="10dp">
+
+        <TextView
+            android:id="@+id/srch_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="Name: "
+            android:textSize="25dp" />
+
+        <EditText
+            android:id="@+id/searchNameBook"
+            android:layout_width="130dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@id/srch_name"
+            android:textSize="17sp" />
+
+        <Button
+            android:id="@+id/srch_btn_name"
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:onClick="onClickSearchByName"
+            android:text="Search name"
+            app:backgroundTint="#FF6E6E" />
+
+        <TextView
+            android:id="@+id/srch_author"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/srch_name"
+            android:layout_margin="10dp"
+            android:text="Author: "
+            android:textSize="23dp" />
+
+        <EditText
+            android:id="@+id/searchNameAuthorBook"
+            android:layout_width="130dp"
+            android:layout_height="40dp"
+            android:layout_below="@id/searchNameBook"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@id/srch_author"
+            android:textSize="17sp" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/srch_btn_name"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="10dp"
+            android:onClick="onClickSearchByNameAuthor"
+            android:text="Search author"
+            app:backgroundTint="#FF6E6E" />
+
+    </RelativeLayout>
+
+
+    <ListView
+        android:id="@+id/listViewSearchBook"
+        android:layout_width="match_parent"
+        android:layout_height="503dp"
+        android:layout_below="@id/rl_search"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="126dp" />
+</RelativeLayout>

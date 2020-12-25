@@ -121,6 +121,11 @@ public class Home_screen extends AppCompatActivity implements NavigationView.OnN
                     startActivity(intent);
                     break;
 
+                case R.id.nav_search:
+                    intent = new Intent(this, Search_Book.class);
+                    startActivity(intent);
+                    break;
+
                 case R.id.nav_editrole:
                     //intent = new Intent(this, HomeListBook.class);
                     //startActivity(intent);
