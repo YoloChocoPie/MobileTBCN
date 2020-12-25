@@ -3,122 +3,87 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="135dp"
+    android:layout_margin="10dp"
+    android:background="@drawable/corner_2"
+    android:elevation="10dp"
     tools:context=".List_all_book">
 
-    <Button
-        android:id="@+id/back_icon"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_marginLeft="5dp"
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="100dp"
+        android:layout_height="134dp"
+        android:layout_marginLeft="10dp"
+        android:padding="5dp"
+        android:scaleType="fitXY" />
+
+    <TextView
+        android:id="@+id/nameBook"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="5dp"
+        android:layout_toRightOf="@+id/image"
+        android:text="Book's name"
+        android:textColor="@android:color/black"
+        android:textSize="25sp" />
+
+    <TextView
+        android:id="@+id/nameAuthor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/nameBook"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="5dp"
+        android:layout_toRightOf="@+id/image"
+        android:text="Author's name"
+        android:textColor="#7E242126"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/booktype"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/nameAuthor"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="5dp"
+        android:layout_toRightOf="@+id/image"
+        android:text="Type of book"
+        android:textColor="#7E242126"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/quantity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/nameBook"
+        android:layout_marginLeft="80dp"
+        android:layout_marginTop="5dp"
+        android:layout_toRightOf="@+id/nameAuthor"
+        android:text="Quantity"
+        android:textColor="#7E242126"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/booktype"
+        android:layout_marginLeft="20dp"
         android:layout_marginTop="10dp"
-        android:background="@drawable/ic_baseline_arrow_back_24"
-        app:backgroundTint="@color/colorPrimaryDark"
-        app:iconTint="@android:color/black" />
+        android:layout_toRightOf="@+id/image"
+        android:text="Status"
+        android:textColor="#7E242126"
+        android:textSize="16sp" />
 
-    <RelativeLayout
-        android:id="@+id/search_bar_inlist"
-        android:layout_width="380dp"
-        android:layout_height="45dp"
-        android:layout_below="@+id/back_icon"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/vien_cong"
-        android:elevation="15dp">
-
-        <EditText
-            android:layout_width="315dp"
-            android:layout_height="50dp"
-            android:layout_marginLeft="50dp"
-            android:hint="Search books, authors" />
-
-        <ImageView
-            android:layout_width="18dp"
-            android:layout_height="18dp"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="20dp"
-            android:background="@drawable/search_icon" />
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/search_bar_inlist"
-        android:layout_marginTop="15dp">
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="135dp"
-            android:elevation="10dp"
-            android:background="@drawable/corner_2"
-            android:layout_margin="10dp">
-
-            <ImageView
-                android:id="@+id/image"
-                android:layout_width="100dp"
-                android:layout_height="134dp"
-                android:layout_marginLeft="10dp"
-                android:padding="5dp"
-                android:scaleType="fitXY" />
-
-            <TextView
-                android:id="@+id/nameBook"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/image"
-                android:text="Book's name"
-                android:textColor="@android:color/black"
-                android:textSize="25sp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="5dp"/>
-
-            <TextView
-                android:id="@+id/nameAuthor"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/nameBook"
-                android:layout_toRightOf="@+id/image"
-                android:text="Author's name"
-                android:textColor="#7E242126"
-                android:textSize="16sp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="5dp"/>
-
-            <TextView
-                android:id="@+id/booktype"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/nameAuthor"
-                android:layout_toRightOf="@+id/image"
-                android:text="Type of book"
-                android:textColor="#7E242126"
-                android:textSize="16sp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="5dp"/>
-
-            <TextView
-                android:id="@+id/quantity"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/nameBook"
-                android:layout_toRightOf="@+id/nameAuthor"
-                android:text="Quantity"
-                android:textColor="#7E242126"
-                android:textSize="16sp"
-                android:layout_marginLeft="80dp"
-                android:layout_marginTop="5dp"/>
-
-            <Button
-                android:id="@+id/btn_borrow_inlist"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="borrow"
-                android:layout_below="@+id/booktype"
-                android:layout_toRightOf="@id/image"
-                android:layout_marginLeft="20dp"
-                android:backgroundTint="@color/Maincolor"/>
-        </RelativeLayout>
-
-    </RelativeLayout>
+<!--    <Button
+        android:id="@+id/btn_borrow_inlist"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/booktype"
+        android:layout_marginLeft="20dp"
+        android:layout_toRightOf="@id/image"
+        android:backgroundTint="@color/Maincolor"
+        android:text="borrow" />-->
 
 </RelativeLayout>
