@@ -25,5 +25,10 @@ You are free to refuse our request for your personal information, with the under
 Your continued use of our website will be regarded as acceptance of our practices around privacy and personal information. If you have any questions about how we handle user data and personal information, feel free to contact us.<br />
 This policy is effective as of <!--<b>1 December 2020.</b>--></string>
 
+    <string name="detail_des_example">
+        We only ask for personal information when we truly need it to provide a service to you. We collect it by fair and lawful means, with your knowledge and consent.We only ask for personal information when we truly need it to provide a service to you. We collect it by fair and lawful means, with your knowledge and consent.
+        We only ask for personal information when we truly need it to provide a service to you. We collect it by fair and lawful means, with your knowledge and consent
+    </string>
+
 </resources>
 
