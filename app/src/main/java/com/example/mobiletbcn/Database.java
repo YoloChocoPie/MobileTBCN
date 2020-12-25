@@ -35,22 +35,23 @@ public class Database extends SQLiteOpenHelper {
     // crud data
     public void insertDataHasImage(Book book) {
         SQLiteDatabase database = getWritableDatabase();
-        String sql = "INSERT INTO Book VALUES(NULL, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO Book VALUES( Null, ?, ?, ?, ?, ?, ?)";
         SQLiteStatement sqLiteStatement = database.compileStatement(sql);
         sqLiteStatement.clearBindings();
 
         sqLiteStatement.bindString(1, book.getName());
-        sqLiteStatement.bindBlob(2, book.getImage());
-        sqLiteStatement.bindString(4, book.getAuthor());
-        sqLiteStatement.bindString(5, book.getDescription());
-        sqLiteStatement.bindString(6, book.getQuantity());
+        sqLiteStatement.bindString(2, book.getAuthor());
+        sqLiteStatement.bindString(3, book.getType());
+        sqLiteStatement.bindString(4, book.getQuantity());
+        sqLiteStatement.bindBlob(5, book.getImage());
+        sqLiteStatement.bindString(6, book.getDescription());
 
         sqLiteStatement.executeInsert();
     }
 
     public void addnewuser(User user) {
         SQLiteDatabase database = getWritableDatabase();
-        String sql = "INSERT INTO User VALUES(NULL, ?, ?, ?, ?,?)";
+        String sql = "INSERT INTO User VALUES( Null, ?, ?, ?, ?, ?)";
         SQLiteStatement sqLiteStatement = database.compileStatement(sql);
         sqLiteStatement.clearBindings();
 
@@ -82,17 +83,19 @@ public class Database extends SQLiteOpenHelper {
 
     public void UpdateDataHasImage(Book book) {
         SQLiteDatabase database = getWritableDatabase();
-        String sql = "UPDATE Book SET name = ?, image = ?, author = ?, description = ?, quantity = ? " +
+        String sql = "UPDATE Book SET name = ?, image = ?, type = ?, author = ?, description = ?, quantity = ? " +
                 "WHERE id = ?";
         SQLiteStatement sqLiteStatement = database.compileStatement(sql);
         sqLiteStatement.clearBindings();
 
+        sqLiteStatement.bindLong(0, book.getId());
         sqLiteStatement.bindString(1, book.getName());
-        sqLiteStatement.bindBlob(2, book.getImage());
-        sqLiteStatement.bindString(4, book.getAuthor());
-        sqLiteStatement.bindString(5, book.getDescription());
-        sqLiteStatement.bindString(6, book.getQuantity());
-        sqLiteStatement.bindLong(7, book.getId());
+        sqLiteStatement.bindString(2, book.getAuthor());
+        sqLiteStatement.bindString(3,book.getType());
+        sqLiteStatement.bindString(4, book.getQuantity());
+        sqLiteStatement.bindBlob(5, book.getImage());
+        sqLiteStatement.bindString(6, book.getDescription());
+
 
         sqLiteStatement.executeInsert();
     }

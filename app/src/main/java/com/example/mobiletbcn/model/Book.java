@@ -3,24 +3,26 @@ package com.example.mobiletbcn.model;
 public class Book {
     private int id;
     private String name;
-    private byte[] image;
-
     private String author;
+    private String type;
+    private String  quantity;
+    private byte[] image;
     private String description;
-    private String quantity;
+
 
     public Book() {
     }
 
 
-    public Book(int id, String name, byte[] image, String author, String description, String quantity) {
+    public Book(int id, String name, String author, String type, String quantity, byte[] image,  String description) {
         this.id = id;
         this.name = name;
-        this.image = image;
-
         this.author = author;
-        this.description = description;
+        this.type = type;
         this.quantity = quantity;
+        this.image = image;
+        this.description = description;
+
     }
 
     public int getId() {
@@ -39,16 +41,6 @@ public class Book {
         this.name = name;
     }
 
-    public byte[] getImage() {
-        return image;
-    }
-
-    public void setImage(byte[] image) {
-        this.image = image;
-    }
-
-
-
     public String getAuthor() {
         return author;
     }
@@ -57,12 +49,12 @@ public class Book {
         this.author = author;
     }
 
-    public String getDescription() {
-        return description;
+    public String getType() {
+        return type;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setType(String type) {
+        this.type = type;
     }
 
     public String getQuantity() {
@@ -71,5 +63,21 @@ public class Book {
 
     public void setQuantity(String quantity) {
         this.quantity = quantity;
+    }
+
+    public byte[] getImage() {
+        return image;
+    }
+
+    public void setImage(byte[] image) {
+        this.image = image;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }
