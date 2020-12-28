@@ -74,7 +74,8 @@ public class DetailBook extends AppCompatActivity {
         backicon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(DetailBook.this,ListBook_frame.class));
+                //startActivity(new Intent(DetailBook.this,ListBook_frame.class));
+                finish();
             }
         });
     }

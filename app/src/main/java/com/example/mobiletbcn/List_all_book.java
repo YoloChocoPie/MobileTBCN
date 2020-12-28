@@ -54,10 +54,10 @@ public class List_all_book extends BaseAdapter implements View.OnClickListener {
         TextView textType = view.findViewById(R.id.booktype);
 
         Book book = bookList.get(i);
-        textNameBook.setText("Name: " + book.getName());
+        textNameBook.setText(book.getName());
         textNameAuthor.setText("Author: " + book.getAuthor());
-        textQuantity.setText("Số lượng: " + book.getQuantity());
-        textType.setText("Thể loại: " + book.getType());
+        textQuantity.setText("Quantity: " + book.getQuantity());
+        textType.setText("Type: " + book.getType());
 
 
         // chuyển byte từ data sang bitmap và gắn vào imageView

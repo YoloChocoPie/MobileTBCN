@@ -92,10 +92,15 @@ public class SignUpActivity extends AppCompatActivity {
             user.setPassword(etPassword.getText().toString());
             user.setcfpass(etRepeatPassword.getText().toString());
 
+            String fname = etFullName.getText().toString();
+
             userController.addnewuser(user);
             // Intent intent = new Intent(this, Welcom_page.class);
             Toast.makeText(SignUpActivity.this, "Tạo tài khoản thành công", Toast.LENGTH_SHORT).show();
             startActivity(new Intent(SignUpActivity.this, Welcom_page.class));
+            /*Intent intent = new Intent(SignUpActivity.this,Welcom_page.class);
+            intent.putExtra("fname",fname);
+            startActivity(intent);*/
         }
     }
 

@@ -16,13 +16,18 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.mobiletbcn.Controller.BookController;
 import com.example.mobiletbcn.Controller.UserController;
+import com.example.mobiletbcn.model.Book;
+import com.example.mobiletbcn.model.KeepInformation;
+import com.example.mobiletbcn.model.User;
+
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     Database database;
     BookController bookController;
     UserController userController;
     Button back_icon,login;
-
+    List<User> userArrayList;
     CheckBox chkBoxRememberMe;
     EditText Username, Password;
     SharedPreferences loginPreferences;
@@ -97,26 +102,11 @@ public class MainActivity extends AppCompatActivity {
         if (checkUser) {
             // thành công thì chuyển sang trang home
             Intent intent = new Intent(MainActivity.this, Home_screen.class);
+            intent.putExtra("name", KeepInformation.getIdUser());
             startActivity(intent);
         } else {
             // thất bại
             Toast.makeText(this, "Wrong username and password", Toast.LENGTH_SHORT).show();
         }
     }
-
-    /*public void login(View view) {
-        EditText userName = findViewById(R.id.userName);
-        EditText password = findViewById(R.id.password);
-        String us = userName.getText().toString();
-        String pass = password.getText().toString();
-        boolean checkUser = userController.checkUserByUserNameAndPassword(us, pass);
-        if (checkUser) {
-            // thành công thì chuyển sang trang home
-            Intent intent = new Intent(MainActivity.this, Home_screen.class);
-            startActivity(intent);
-        } else {
-            // thất bại
-            Toast.makeText(this, "Wrong username and password", Toast.LENGTH_SHORT).show();
-        }
-    }*/
 }

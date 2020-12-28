@@ -9,9 +9,11 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -23,6 +25,7 @@ import com.example.mobiletbcn.model.Book;
 import com.example.mobiletbcn.model.KeepInformation;
 
 import java.io.ByteArrayOutputStream;
+import java.util.ArrayList;
 
 public class Add_Book extends AppCompatActivity{
     public static final int PICK_IMAGE = 2;
@@ -31,11 +34,12 @@ public class Add_Book extends AppCompatActivity{
     final private int REQUEST_CODE_CAMERA = 456;
     Button back_icon;
     EditText type;
+    Spinner spinertype;
     EditText nameBook;
     EditText nameAuthor;
     EditText quantity;
     EditText description;
-    ImageView image,navic;
+    ImageView image;
 
     Database database;
     BookController bookController;
@@ -50,13 +54,14 @@ public class Add_Book extends AppCompatActivity{
 
         database = new Database(this, "ManagementBook.sqlite", null, 1);
         bookController = new BookController(database);
-//        KeepInformation.getRole().equals("admin");
+        //KeepInformation.getRole().equals("admin");
 
         back_icon = findViewById(R.id.back_icon);
         back_icon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Add_Book.this,Home_screen.class);
+                intent.putExtra("name",KeepInformation.getIdUser());
                 startActivity(intent);
             }
         });
@@ -73,7 +78,26 @@ public class Add_Book extends AppCompatActivity{
         quantity = findViewById(R.id.quantityAdd);
         description = findViewById(R.id.descriptionAdd);
         image = findViewById(R.id.imageAdd);
-        type = findViewById(R.id.typeBookAdd);
+        spinertype =(Spinner) findViewById(R.id.spinertypeBookAdd);
+
+        ArrayList<String> arraycate = new ArrayList<String>();
+        arraycate.add("Novel");
+        arraycate.add("Adventure");
+        arraycate.add("Mystery");
+        arraycate.add("Fantasy");
+        arraycate.add("Historical Fiction");
+        arraycate.add("Horror");
+        arraycate.add("Literary Fiction");
+        arraycate.add("Romance");
+        arraycate.add("Sci-Fi");
+        arraycate.add("Biographies");
+        arraycate.add("Autobiographies");
+        arraycate.add("Essays");
+        arraycate.add("Self-Help");
+
+        ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line,arraycate);
+
+        spinertype.setAdapter(arrayAdapter);
     }
 
 
@@ -81,7 +105,7 @@ public class Add_Book extends AppCompatActivity{
         Book book = new Book();
         book.setName(nameBook.getText().toString());
         book.setAuthor(nameAuthor.getText().toString());
-        book.setType(type.getText().toString());
+        book.setType(spinertype.getSelectedItem().toString());
         book.setQuantity(quantity.getText().toString());
         book.setDescription(description.getText().toString());
 
@@ -98,11 +122,6 @@ public class Add_Book extends AppCompatActivity{
         Toast.makeText(Add_Book.this,"Thêm sách thành công",Toast.LENGTH_SHORT).show();
         startActivity(new Intent(Add_Book.this, Home_screen.class));
     }
-
-    /*public Intent actionImage() {
-        Intent intent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
-        return intent;
-    }*/
 
     public void SelectImageToPhone(View view) {
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -129,8 +148,8 @@ public class Add_Book extends AppCompatActivity{
         intent.setType("image/*");
         startActivityForResult(intent, IMAGE_PICK_CODE);
     }
-    //handle result of runtime permission
 
+    //handle result of runtime permission
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         switch (requestCode) {
@@ -148,7 +167,6 @@ public class Add_Book extends AppCompatActivity{
     }
 
     //handle result of picked image
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -157,43 +175,5 @@ public class Add_Book extends AppCompatActivity{
         }
     }
 
-    /*public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        switch (requestCode) {
-            case REQUEST_CODE_CAMERA:
-                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                    startActivityForResult(intent, REQUEST_CODE_CAMERA);
-                } else {
-                    Toast.makeText(this, "Bạn Không Cho Phép Mở CAMERA", Toast.LENGTH_SHORT);
-                }
-                break;
-            case PICK_IMAGE:
-                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    Intent intent = new Intent(Intent.ACTION_PICK);
-                    intent.setType("image/*");
-                    startActivityForResult(intent, PICK_IMAGE);
-                } else {
-                    Toast.makeText(this, "Bạn Không Cho Phép truy cập ảnh", Toast.LENGTH_SHORT);
-                }
-                break;
-        }
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-    }*/
 
-   /* @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        // sau khi chụp ảnh xong
-        if (resultCode == RESULT_OK) {
-            if (requestCode == REQUEST_CODE_CAMERA && data != null) {
-                Bitmap bitmap = (Bitmap) data.getExtras().get("data"); // data là key mặc định
-                image.setImageBitmap(bitmap);
-            }
-        }
-        // sau khi lựa chọn ảnh từ thư viện
-        if (requestCode == PICK_IMAGE) {
-            Uri selectedImage = data.getData();
-            image.setImageURI(selectedImage);
-        }
-        super.onActivityResult(requestCode, resultCode, data);
-    }*/
 }
