@@ -12,6 +12,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar">
+        <activity android:name=".Profile"></activity>
+        <activity android:name=".DetailEditUser" />
+<!--        <activity android:name=".List_all_user" />-->
+        <activity android:name=".ListUser_frame" />
+        <activity android:name=".Edit_Book" />
+        <activity android:name=".DetailEditBook" />
         <activity android:name=".ListBook_frame" />
         <activity android:name=".DetailBook" />
         <activity android:name=".SignUpActivity" />
@@ -19,17 +25,14 @@
         <activity android:name=".Home_screen" />
         <activity android:name=".Welcom_page" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".Search_Book"/>
+        <activity android:name=".Search_Book" />
         <activity android:name=".SplashScreen">
-
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity> <!-- <activity android:name=".HomeMain" /> -->
-
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

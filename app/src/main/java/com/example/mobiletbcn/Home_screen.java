@@ -12,6 +12,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,9 +21,11 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.mobiletbcn.Controller.UserController;
 import com.example.mobiletbcn.HomeAdapter.FeatureAdapter;
 import com.example.mobiletbcn.HomeAdapter.FeatureHelperClass;
 import com.example.mobiletbcn.model.KeepInformation;
+import com.example.mobiletbcn.model.User;
 import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
@@ -33,9 +36,16 @@ public class Home_screen extends AppCompatActivity implements NavigationView.OnN
     //List<Book> bookArrayList;
     //ListBookAdapter listBookAdapter;
 
+    Database database;
+    UserController userController;
+    private User user;
+    //private int idus;
+
     RecyclerView feature_recycler;
     RecyclerView.Adapter adapter;
     ImageView navic;
+    TextView nameOfUser;
+
 
     //drawer menu
     DrawerLayout drawerLayout;
@@ -51,6 +61,9 @@ public class Home_screen extends AppCompatActivity implements NavigationView.OnN
 
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
+        database = new Database(this, "ManagementBook.sqlite", null, 1);
+        userController = new UserController(database);
+
         //hooks
         feature_recycler = findViewById(R.id.feature_recycler);
         navic = findViewById(R.id.nav_ic);
@@ -59,12 +72,11 @@ public class Home_screen extends AppCompatActivity implements NavigationView.OnN
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
 
-       if (KeepInformation.getRole().equals("admin")) {
+        if (KeepInformation.getRole().equals("admin")) {
             navigationView.getMenu().findItem(R.id.mangae_gr).setVisible(true);
         } else {
             navigationView.getMenu().findItem(R.id.mangae_gr).setVisible(false);
         }
-
 
         //navigation view function calls
         navigationDrawer();
@@ -80,13 +92,30 @@ public class Home_screen extends AppCompatActivity implements NavigationView.OnN
         navigationView.setNavigationItemSelectedListener(this);
         navigationView.setCheckedItem(R.id.nav_home);
 
+
+
         navic.setOnClickListener(new View.OnClickListener() {
+            private  int idus;
             @Override
             public void onClick(View v) {
                 if (drawerLayout.isDrawerVisible(GravityCompat.START)) {
                     drawerLayout.closeDrawer(GravityCompat.START);
                 } else {
                     drawerLayout.openDrawer(GravityCompat.START);
+                    /*Bundle extras = getIntent().getExtras();
+                    String name = extras.getString("name",KeepInformation.getFullnameUser());
+                    nameOfUser = findViewById(R.id.nameofuser);
+                    nameOfUser.setText("Hello " + name);*/
+
+
+                    Bundle extras = getIntent().getExtras();
+                    int idus = extras.getInt("name");
+
+                    user = userController.findUserById(idus);
+                    this.idus = user.getId();
+                    User usern = userController.findUserById(idus);
+                    nameOfUser = findViewById(R.id.nameofuser);
+                    nameOfUser.setText("Hello " + usern.getFullName());
                 }
             }
         });
@@ -116,6 +145,12 @@ public class Home_screen extends AppCompatActivity implements NavigationView.OnN
         final Intent intent;
         if (KeepInformation.getRole().equals("admin")) {
             switch (item.getItemId()) {
+                case R.id.nav_profile:
+                    intent = new Intent(this, Profile.class);
+                    intent.putExtra("user",KeepInformation.getIdUser());
+                    startActivity(intent);
+                    break;
+
                 case R.id.nav_addbook:
                     intent = new Intent(this, Add_Book.class);
                     startActivity(intent);
@@ -132,8 +167,8 @@ public class Home_screen extends AppCompatActivity implements NavigationView.OnN
                     break;
 
                 case R.id.nav_list:
-                    //intent = new Intent(this, SearchBook.class);
-                    //startActivity(intent);
+                    intent = new Intent(this, ListUser_frame.class);
+                    startActivity(intent);
                     break;
 
                 case R.id.nav_language:
@@ -180,6 +215,12 @@ public class Home_screen extends AppCompatActivity implements NavigationView.OnN
             }
         } else {
             switch (item.getItemId()) {
+                case R.id.nav_profile:
+                    intent = new Intent(this, Profile.class);
+                    intent.putExtra("user",KeepInformation.getIdUser());
+                    startActivity(intent);
+                    break;
+
                 case R.id.listBookUser:
                     //intent = new Intent(this, HomeListBook.class);
                     //startActivity(intent);
@@ -210,13 +251,6 @@ public class Home_screen extends AppCompatActivity implements NavigationView.OnN
                     mydialog.setContentView(R.layout.custumpopup);
                     mydialog.show();
 
-                    /*btn_iunderstand = findViewById(R.id.btn_iunderstand);
-                    btn_iunderstand.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            mydialog.dismiss();
-                        }
-                    });
                     //mydialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));*/
                     mydialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                     break;
@@ -260,7 +294,10 @@ public class Home_screen extends AppCompatActivity implements NavigationView.OnN
         mydialog.dismiss();
     }
 
+    public static void buttonUpdateUser() {
     }
+
+}
 
 
 
