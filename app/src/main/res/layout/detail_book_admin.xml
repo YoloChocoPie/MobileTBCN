@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/back_icon"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/ic_baseline_arrow_back_24"
+        app:backgroundTint="@android:color/white"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="450dp">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="450dp"
+            android:background="#FF6E6E" />
+
+        <ImageView
+            android:id="@+id/detail_admin_imgbook"
+            android:layout_width="match_parent"
+            android:layout_height="450dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/book_cover_1"/>
+
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="430dp"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/layout_bg">
+
+        <TextView
+            android:id="@+id/detail_admin_namebook"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Book's name"
+            android:textSize="30sp"
+            android:textColor="@android:color/black"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"/>
+
+        <TextView
+            android:id="@+id/detail_admin_nameauthor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Author name"
+            android:textSize="18sp"
+            android:layout_centerHorizontal="true"
+
+            android:layout_below="@+id/detail_admin_namebook"/>
+
+        <TextView
+            android:id="@+id/detail_admin_typebook"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Type"
+            android:textSize="16sp"
+            android:layout_below="@+id/detail_admin_nameauthor"
+            android:layout_toLeftOf="@+id/detail_admin_namebook"
+            android:layout_marginTop="10dp"/>
+
+        <TextView
+            android:id="@+id/detail_admin_quantity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Quantity"
+            android:textSize="16sp"
+            android:layout_below="@+id/detail_admin_nameauthor"
+            android:layout_toRightOf="@+id/detail_admin_namebook"
+            android:layout_marginTop="10dp"/>
+
+        <TextView
+            android:id="@+id/t"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mô tả"
+            android:textSize="15sp"
+            android:layout_below="@+id/detail_admin_typebook"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="30dp"/>
+
+        <TextView
+            android:id="@+id/detail_admin_descriptionbook"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/detail_des_example"
+            android:textSize="16sp"
+            android:textColor="@android:color/black"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/t"
+            android:padding="10dp"/>
+
+        <Button
+            android:id="@+id/detail_admin_btn_edit"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="20dp"
+            android:text="edit"
+            app:backgroundTint="#FF6E6E"
+            android:onClick="onClickEditBook"/>
+
+        <Button
+            android:id="@+id/detail_admin_btn_delete"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="5dp"
+            android:layout_marginRight="20dp"
+            android:text="Delete"
+            app:backgroundTint="#AEA5A5"
+            android:onClick="onClickDeleteBook"/>
+
+
+    </RelativeLayout>
+
+
+</RelativeLayout>
