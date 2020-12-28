@@ -27,6 +27,23 @@ public class UserController implements User {
     }
 
     @Override
+    public com.example.mobiletbcn.model.User findUserById(int id) {
+        Cursor cursor = database.getData("SELECT * FROM User WHERE id = " + id);
+        com.example.mobiletbcn.model.User user = new com.example.mobiletbcn.model.User();
+        while (cursor.moveToNext()) {
+            user.setId(cursor.getInt(0));
+            user.setFullName(cursor.getString(1));
+            user.setRole(cursor.getString(2));
+            user.setUserName(cursor.getString(3));
+            user.setPassword(cursor.getString(4));
+            //user.setcfpass(cursor.getString(5));
+            //user.setIdBooking_User(cursor.getInt(6));
+        }
+        return user;
+    }
+
+
+    @Override
     public List getAllUser() {
         Cursor cursor = database.getData("SELECT * FROM User");
         List list = new ArrayList();
@@ -42,10 +59,6 @@ public class UserController implements User {
         }
         return list;
     }
-
-
-
-
 
     @Override
     public boolean checkUserByUserNameAndPassword(String userName, String password) {
