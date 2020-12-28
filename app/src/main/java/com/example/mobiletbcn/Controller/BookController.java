@@ -38,8 +38,8 @@ public class BookController implements Book {
         return bookList;
     }
 
-   // Cập nhập sách theo ID
 
+   // Cập nhập sách theo ID
     @Override
     public void updateQuantityBookById(int quantity, int idBook) {
         database.queryData("UPDATE Book SET quantity = '" + quantity + "' WHERE id = " + idBook);
@@ -62,6 +62,7 @@ public class BookController implements Book {
         }
         return book;
     }
+
 
     @Override
     public void updateBookById(com.example.mobiletbcn.model.Book book) {

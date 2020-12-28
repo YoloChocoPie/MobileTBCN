@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.mobiletbcn.Controller.BookController;
 import com.example.mobiletbcn.model.Book;
+import com.example.mobiletbcn.model.KeepInformation;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,6 +43,7 @@ public class Search_Book extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Search_Book.this,Home_screen.class);
+                intent.putExtra("name",KeepInformation.getIdUser());
                 startActivity(intent);
             }
         });
@@ -57,9 +59,15 @@ public class Search_Book extends AppCompatActivity {
                 public void onItemClick(AdapterView<?> parent, View view, int position,
                                         long id) {
                     int idItem = bookArrayList.get(position).getId();
-                    Intent intent = new Intent(Search_Book.this, DetailBook.class);
-                    intent.putExtra("idBook", idItem);
-                    startActivity(intent);
+                    if (KeepInformation.getRole().trim()/*.toUpperCase()*/.equals("admin")) {
+                        Intent intent = new Intent(Search_Book.this, DetailEditBook.class);
+                        intent.putExtra("idBook", idItem);
+                        startActivity(intent);
+                    } else {
+                        Intent intent = new Intent(Search_Book.this, DetailBook.class);
+                        intent.putExtra("idBook", idItem);
+                        startActivity(intent);
+                    }
                 }
             });
         } else {
@@ -72,6 +80,7 @@ public class Search_Book extends AppCompatActivity {
         listView = findViewById(R.id.listViewSearchBook);
         bookArrayList = new ArrayList<>();
         bookArrayList = bookController.searchNameBook(editText.getText().toString().trim());
+        editText.getText().clear();
         mappingData();
     }
 
@@ -80,6 +89,7 @@ public class Search_Book extends AppCompatActivity {
         listView = findViewById(R.id.listViewSearchBook);
         bookArrayList = new ArrayList<>();
         bookArrayList = bookController.searchAuthorBook(editText.getText().toString().trim());
+        editText.getText().clear();
         mappingData();
     }
 

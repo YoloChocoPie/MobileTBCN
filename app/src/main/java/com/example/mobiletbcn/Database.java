@@ -66,7 +66,7 @@ public class Database extends SQLiteOpenHelper {
 
     public void updateuser(User user) {
         SQLiteDatabase database = getWritableDatabase();
-        String sql = "UPDATE Book SET FullName = ?, Role = ?, UserName = ?, Password = ?, cfpass = ? " +
+        String sql = "UPDATE User SET  FullName = ?, Role = ?, UserName = ?, Password = ?, cfpass = ? " +
                 "WHERE id = ?";
         SQLiteStatement sqLiteStatement = database.compileStatement(sql);
         sqLiteStatement.clearBindings();
@@ -83,18 +83,19 @@ public class Database extends SQLiteOpenHelper {
 
     public void UpdateDataHasImage(Book book) {
         SQLiteDatabase database = getWritableDatabase();
-        String sql = "UPDATE Book SET name = ?, image = ?, type = ?, author = ?, description = ?, quantity = ? " +
+        String sql = "UPDATE Book SET name = ?, author = ?, type = ?, quantity = ?, image = ?,description = ? " +
                 "WHERE id = ?";
         SQLiteStatement sqLiteStatement = database.compileStatement(sql);
         sqLiteStatement.clearBindings();
 
-        sqLiteStatement.bindLong(0, book.getId());
+        //sqLiteStatement.bindLong(0, book.getId());
         sqLiteStatement.bindString(1, book.getName());
         sqLiteStatement.bindString(2, book.getAuthor());
         sqLiteStatement.bindString(3,book.getType());
         sqLiteStatement.bindString(4, book.getQuantity());
         sqLiteStatement.bindBlob(5, book.getImage());
         sqLiteStatement.bindString(6, book.getDescription());
+        sqLiteStatement.bindLong(7, book.getId());
 
 
         sqLiteStatement.executeInsert();
