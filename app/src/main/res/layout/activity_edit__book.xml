@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Edit_Book">
+
+    <Button
+        android:id="@+id/back_icon"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/ic_baseline_arrow_back_24"
+        app:backgroundTint="@color/colorPrimaryDark"
+        app:iconTint="@android:color/black" />
+
+    <ImageView
+        android:id="@+id/imageEdit"
+        android:layout_width="200dp"
+        android:layout_height="330dp"
+        android:layout_below="@id/back_icon"
+        android:layout_margin="15dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/back_icon"
+        android:layout_marginTop="15dp"
+        android:layout_toRightOf="@id/imageEdit"
+        android:text="Book's name:"
+        android:textSize="15sp" />
+
+    <EditText
+        android:id="@+id/nameBookEdit"
+        android:layout_width="190dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/back_icon"
+        android:layout_marginLeft="-10dp"
+        android:layout_marginTop="30dp"
+        android:layout_toRightOf="@id/imageEdit"
+        android:inputType="text" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/nameBookEdit"
+        android:layout_toRightOf="@id/imageEdit"
+        android:text="Author's name: "
+        android:textSize="15sp" />
+
+    <EditText
+        android:id="@+id/nameAuthorEdit"
+        android:layout_width="190dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/nameBookEdit"
+        android:layout_marginLeft="-10dp"
+        android:layout_marginTop="15dp"
+        android:layout_toRightOf="@id/imageEdit"
+        android:inputType="text" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/nameAuthorEdit"
+        android:layout_toRightOf="@id/imageEdit"
+        android:text="Type: " />
+
+    <!--<EditText
+        android:id="@+id/typeBookEdit"
+        android:layout_width="190dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/nameAuthorEdit"
+        android:layout_marginLeft="-10dp"
+        android:layout_marginTop="15dp"
+        android:layout_toRightOf="@id/imageEdit" />-->
+
+    <Spinner
+        android:id="@+id/spinertypeBookEdit"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/nameAuthorEdit"
+        android:layout_marginLeft="-10dp"
+        android:layout_marginTop="20dp"
+        android:layout_toRightOf="@id/imageEdit" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/spinertypeBookEdit"
+        android:layout_toRightOf="@id/imageEdit"
+        android:text="Quantity: "
+        android:textSize="15sp"
+        android:layout_marginTop="10dp"/>
+
+    <EditText
+        android:id="@+id/quantityEdit"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/spinertypeBookEdit"
+        android:layout_marginLeft="-10dp"
+        android:layout_marginTop="25dp"
+        android:layout_toRightOf="@id/imageEdit"
+        android:inputType="text" />
+
+    <Button
+        android:id="@+id/select_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/quantityEdit"
+        android:layout_marginLeft="-10dp"
+        android:layout_marginTop="5dp"
+        android:layout_toRightOf="@id/imageEdit"
+        android:backgroundTint="@android:color/black"
+        android:onClick="SelectImageToPhone"
+        android:text="Select Image"
+        android:textColor="#FFC200" />
+
+    <Button
+        android:id="@+id/btn_updatebook"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/select_image"
+        android:layout_marginLeft="-10dp"
+        android:layout_toRightOf="@id/imageEdit"
+        android:backgroundTint="@color/Maincolor"
+        android:onClick="buttonUpdate"
+        android:text="Update book"
+        android:layout_marginTop="5dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/imageEdit"
+        android:layout_marginLeft="15dp"
+        android:text="Description"
+        android:textSize="18sp" />
+
+    <EditText
+        android:id="@+id/descriptionEdit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/imageEdit"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="25dp"
+        android:hint="description of book here"
+        android:inputType="text" />
+
+
+</RelativeLayout>

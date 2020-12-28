@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DetailEditUser">
+
+    <Button
+        android:id="@+id/back_icon"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/ic_baseline_arrow_back_24"
+        app:backgroundTint="@color/colorPrimaryDark"
+        app:iconTint="@android:color/black"
+        android:onClick="backtofuture"/>
+
+    <ImageView
+        android:id="@+id/imageEdit"
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        android:layout_margin="10dp"
+        android:layout_below="@id/back_icon"
+        android:background="@drawable/icons_user_male_500"
+        android:layout_centerHorizontal="true"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Full name:"
+        android:layout_below="@id/imageEdit"
+        android:layout_marginTop="15dp"
+        android:textSize="15sp"
+        android:layout_centerHorizontal="true"/>
+
+    <EditText
+        android:id="@+id/fullnameEdit"
+        android:layout_width="190dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="45dp"
+        android:layout_below="@id/imageEdit"
+        android:layout_marginLeft="-10dp"
+        android:enabled="false"
+        android:layout_centerHorizontal="true"
+        android:textAlignment="center"
+        android:gravity="center_horizontal" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Username: "
+        android:layout_below="@id/fullnameEdit"
+        android:textSize="15sp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"/>
+
+    <EditText
+        android:id="@+id/usernameEdit"
+        android:layout_width="190dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="35dp"
+        android:layout_below="@id/fullnameEdit"
+        android:layout_marginLeft="-10dp"
+        android:enabled="false"
+        android:layout_centerHorizontal="true"
+        android:textAlignment="center"
+        android:gravity="center_horizontal"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Role: "
+        android:layout_below="@id/usernameEdit"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"/>
+
+    <!--<EditText
+        android:id="@+id/roleEdit"
+        android:layout_width="190dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="35dp"
+        android:layout_below="@id/usernameEdit"
+        android:layout_marginLeft="-10dp"
+        android:layout_centerHorizontal="true"
+        android:textAlignment="center"
+        android:gravity="center_horizontal"/>-->
+    <Spinner
+        android:id="@+id/rolespinner"
+        android:layout_width="110dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="35dp"
+        android:layout_below="@id/usernameEdit"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Password: "
+        android:layout_below="@id/rolespinner"
+        android:textSize="15sp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"/>
+
+    <EditText
+        android:id="@+id/passwordEdit"
+        android:layout_width="190dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="35dp"
+        android:layout_below="@id/rolespinner"
+        android:layout_marginLeft="-10dp"
+        android:enabled="false"
+        android:layout_centerHorizontal="true"
+        android:textAlignment="center"
+        android:gravity="center_horizontal"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CF Password: "
+        android:layout_below="@id/passwordEdit"
+        android:textSize="15sp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:visibility="invisible"/>
+
+    <EditText
+        android:id="@+id/cfpasswordEdit"
+        android:layout_width="190dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="35dp"
+        android:layout_below="@id/rolespinner"
+        android:layout_marginLeft="-10dp"
+        android:enabled="false"
+        android:layout_centerHorizontal="true"
+        android:textAlignment="center"
+        android:gravity="center_horizontal"
+        android:visibility="invisible"/>
+
+    <Button
+        android:id="@+id/btn_updatebook"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/Maincolor"
+        android:text="Update"
+        android:layout_below="@id/passwordEdit"
+        android:layout_marginLeft="-10dp"
+        android:onClick="buttonUpdate"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"/>
+
+
+
+</RelativeLayout>
