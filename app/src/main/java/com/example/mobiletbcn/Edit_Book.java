@@ -1,0 +1,199 @@
+package com.example.mobiletbcn;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.Manifest;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.os.Build;
+import android.os.Bundle;
+import android.view.View;
+import android.view.WindowManager;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.Spinner;
+import android.widget.Toast;
+
+import com.example.mobiletbcn.Controller.BookController;
+import com.example.mobiletbcn.model.Book;
+import com.example.mobiletbcn.model.KeepInformation;
+
+import java.io.ByteArrayOutputStream;
+import java.util.ArrayList;
+
+public class Edit_Book extends AppCompatActivity  {
+    Database database;
+    BookController bookController;
+
+    private static final int IMAGE_PICK_CODE = 1000;
+    private static final int PERMISSION_CODE = 1001;
+
+    private Book book;
+    private int idBook;
+
+    EditText nameBook;
+    EditText nameAuthor;
+    Spinner type;
+    EditText quantity;
+    EditText description;
+    ImageView image;
+
+    Button backicon,btn_update;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_edit__book);
+
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        //KeepInformation.getRole().equals("admin");
+
+        database = new Database(this, "ManagementBook.sqlite", null, 1);
+        bookController = new BookController(database);
+
+        Bundle extras = getIntent().getExtras();
+        int idBook = extras.getInt("idBook"); // LẤY LẠI ID TỪ Detail edit book
+
+        book = bookController.findBookById(idBook);
+        this.idBook = book.getId();
+
+        mappingData(idBook);
+
+        btn_update = findViewById(R.id.btn_updatebook);
+
+        backicon = findViewById(R.id.back_icon);
+        backicon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Edit_Book.this, DetailEditBook.class);
+                intent.putExtra("idBook", idBook);
+                startActivity(intent);
+            }
+        });
+    }
+    // lấy dữ liệu cũ của book sau đó gán vào view
+    public void mappingData(int idBook) {
+        nameBook = findViewById(R.id.nameBookEdit);
+        nameAuthor = findViewById(R.id.nameAuthorEdit);
+        type = (Spinner) findViewById(R.id.spinertypeBookEdit);
+        quantity = findViewById(R.id.quantityEdit);
+        description = findViewById(R.id.descriptionEdit);
+        image = findViewById(R.id.imageEdit);
+
+        ArrayList<String> arraycate = new ArrayList<String>();
+        arraycate.add("Novel");
+        arraycate.add("Adventure");
+        arraycate.add("Mystery");
+        arraycate.add("Fantasy");
+        arraycate.add("Historical Fiction");
+        arraycate.add("Horror");
+        arraycate.add("Literary Fiction");
+        arraycate.add("Romance");
+        arraycate.add("Sci-Fi");
+        arraycate.add("Biographies");
+        arraycate.add("Autobiographies");
+        arraycate.add("Essays");
+        arraycate.add("Self-Help");
+        ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line,arraycate);
+        type.setAdapter(arrayAdapter);
+
+        Book book = bookController.findBookById(idBook);
+        nameBook.setText(book.getName());
+        nameAuthor.setText(book.getAuthor());
+
+
+        type.setSelection(arrayAdapter.getPosition(book.getType()));
+
+
+        quantity.setText(book.getQuantity());
+        description.setText(book.getDescription());
+
+        // chuyển byte từ data sang bitmap và gắn vào imageView
+        byte[] imageByte = book.getImage();
+        Bitmap bitmap = BitmapFactory.decodeByteArray(imageByte, 0, imageByte.length);
+        image.setImageBitmap(bitmap);
+    }
+
+    public void SelectImageToPhone(View view) {
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED) {
+                //permission is not granted, request it.
+                String[] permissions = {Manifest.permission.READ_EXTERNAL_STORAGE};
+                //show popup for runtime permission
+                requestPermissions(permissions, PERMISSION_CODE);
+            }
+            else {
+                //permission already granted
+                pickImageFromGallery();
+            }
+        }
+        else {
+            //system os is less them marshmallow
+            pickImageFromGallery();
+        }
+    }
+
+    private void pickImageFromGallery() {
+        //intent to pick image
+        Intent intent = new Intent(Intent.ACTION_PICK);
+        intent.setType("image/*");
+        startActivityForResult(intent, IMAGE_PICK_CODE);
+    }
+    //handle result of runtime permission
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        switch (requestCode) {
+            case PERMISSION_CODE: {
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    //permission was granted
+                    pickImageFromGallery();
+                }
+                else {
+                    //permission was denied
+                    Toast.makeText(this, "Permission denied!!!", Toast.LENGTH_LONG).show();
+                }
+            }
+        }
+    }
+    //handle result of picked image
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == IMAGE_PICK_CODE && resultCode == RESULT_OK && data != null ) {
+            image.setImageURI(data.getData());
+        }
+    }
+
+    public void buttonUpdate(View view) {
+        Book book = new Book();
+        book.setId(idBook);
+        book.setName(nameBook.getText().toString());
+        book.setAuthor(nameAuthor.getText().toString());
+        book.setType(type.getSelectedItem().toString());
+        book.setQuantity(quantity.getText().toString());
+        book.setDescription(description.getText().toString());
+
+        // chuyen data image sang byte[]
+        BitmapDrawable bitmapDrawable = (BitmapDrawable) image.getDrawable();
+        Bitmap bitmap = bitmapDrawable.getBitmap();
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
+        byte[] picture = byteArrayOutputStream.toByteArray();
+        book.setImage(picture);
+
+        bookController.updateBookById(book);
+        Intent intent = new Intent(this, ListBook_frame.class);
+        startActivity(intent);
+    }
+
+}

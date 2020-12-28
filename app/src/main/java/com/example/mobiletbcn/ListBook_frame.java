@@ -20,7 +20,6 @@ public class ListBook_frame extends AppCompatActivity {
     List<Book> bookArrayList;
     List_all_book listBookAdapter;
     Button back_icon;
-    //RelativeLayout listframe;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +48,7 @@ public class ListBook_frame extends AppCompatActivity {
         back_icon = findViewById(R.id.back_icon);
         back_icon.setOnClickListener(v -> {
             Intent intent = new Intent(ListBook_frame.this,Home_screen.class);
+            intent.putExtra("name",KeepInformation.getIdUser());
             startActivity(intent);
         });
 
