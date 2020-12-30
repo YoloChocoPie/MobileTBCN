@@ -107,10 +107,8 @@ public class Home_screen extends AppCompatActivity implements NavigationView.OnN
                     nameOfUser = findViewById(R.id.nameofuser);
                     nameOfUser.setText("Hello " + name);*/
 
-
                     Bundle extras = getIntent().getExtras();
                     int idus = extras.getInt("name");
-
                     user = userController.findUserById(idus);
                     this.idus = user.getId();
                     User usern = userController.findUserById(idus);
@@ -215,6 +213,17 @@ public class Home_screen extends AppCompatActivity implements NavigationView.OnN
             }
         } else {
             switch (item.getItemId()) {
+                case R.id.nav_search:
+                    intent = new Intent(this, Search_Book.class);
+                    startActivity(intent);
+                    break;
+
+                case R.id.nav_cate:
+                    intent = new Intent(this, Borrow_List.class);
+                    intent.putExtra("user",KeepInformation.getIdUser());
+                    startActivity(intent);
+                    break;
+
                 case R.id.nav_profile:
                     intent = new Intent(this, Profile.class);
                     intent.putExtra("user",KeepInformation.getIdUser());

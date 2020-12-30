@@ -7,67 +7,6 @@
     android:animateLayoutChanges="false"
     tools:context=".MainActivity">
 
-    <!--<TextView
-        android:id="@+id/textView2test"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/password"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_marginStart="47dp"
-        android:layout_marginLeft="47dp"
-        android:layout_marginTop="67dp"
-        android:text=""
-        android:textSize="25dp" />-->
-
-    <!--<TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginStart="329dp"
-        android:layout_marginLeft="329dp"
-        android:layout_marginTop="368dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginRight="32dp"
-        android:layout_toEndOf="@+id/textView2"
-        android:layout_toRightOf="@+id/textView2"
-        android:text=""
-        android:textSize="25dp" />-->
-
-    <!--<Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="167dp"
-        android:layout_marginRight="167dp"
-        android:layout_marginBottom="21dp"
-        android:text="Cancel" />-->
-
-
-    <!--<ProgressBar
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerInParent="true"
-        android:layout_centerVertical="true"
-        android:layout_marginTop="235dp"
-        android:background="@drawable/white_circle"
-        android:backgroundTint="@android:color/white"
-        android:elevation="8dp" />-->
-
-        <!--<ImageView
-            android:id="@+id/back_icon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_baseline_arrow_back_24"
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="10dp"/>-->
 
     <Button
         android:id="@+id/button"
@@ -84,6 +23,7 @@
         app:backgroundTint="#FF6E6E" />
 
     <Button
+        android:id="@+id/btn_forget"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/password"
@@ -194,7 +134,7 @@
         app:srcCompat="@drawable/pleaselogin" />
 
     <Button
-        android:id="@+id/back_icon"
+        android:id="@+id/back_icon1"
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_marginLeft="5dp"

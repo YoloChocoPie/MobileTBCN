@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
     Database database;
     BookController bookController;
     UserController userController;
-    Button back_icon,login;
+    Button back_icon,login,forget;
     List<User> userArrayList;
     CheckBox chkBoxRememberMe;
     EditText Username, Password;
@@ -62,7 +62,16 @@ public class MainActivity extends AppCompatActivity {
             chkBoxRememberMe.setChecked(true);
         }
 
-        back_icon = findViewById(R.id.back_icon);
+        forget = findViewById(R.id.btn_forget);
+        forget.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), PasswordActivity_forget.class);
+                startActivity(intent);
+            }
+        });
+
+        back_icon = findViewById(R.id.back_icon1);
         back_icon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

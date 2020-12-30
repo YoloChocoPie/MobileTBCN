@@ -118,9 +118,11 @@ public class Add_Book extends AppCompatActivity{
         book.setImage(picture);
 
         bookController.addNewBook(book);
-      //  Intent intent = new Intent(this, Home_screen.class);
         Toast.makeText(Add_Book.this,"Thêm sách thành công",Toast.LENGTH_SHORT).show();
-        startActivity(new Intent(Add_Book.this, Home_screen.class));
+        //startActivity(new Intent(Add_Book.this, Home_screen.class));
+        Intent intent = new Intent(Add_Book.this,Home_screen.class);
+        intent.putExtra("name",KeepInformation.getIdUser());
+        startActivity(intent);
     }
 
     public void SelectImageToPhone(View view) {
