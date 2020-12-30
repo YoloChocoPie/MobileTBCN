@@ -16,12 +16,13 @@
         app:backgroundTint="@color/colorPrimaryDark"
         app:iconTint="@android:color/black" />
 
+
     <RelativeLayout
         android:id="@+id/rl_search"
-        android:layout_width="match_parent"
-        android:layout_height="130dp"
+        android:layout_width="400dp"
+        android:layout_height="163dp"
         android:layout_below="@id/back_icon"
-        android:layout_marginTop="10dp">
+        android:layout_marginTop="5dp">
 
         <TextView
             android:id="@+id/srch_name"
@@ -58,6 +59,20 @@
             android:text="Author: "
             android:textSize="23dp" />
 
+        <TextView
+            android:id="@+id/srch_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/srch_author"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            android:text="Type: "
+            android:textSize="23dp" />
+
         <EditText
             android:id="@+id/searchNameAuthorBook"
             android:layout_width="130dp"
@@ -70,6 +85,21 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@id/srch_author"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_toEndOf="@+id/spinnerTypeSearch"
+            android:layout_toRightOf="@+id/spinnerTypeSearch"
+            android:onClick="onClickSearchByType"
+            android:text="Search type"
+            app:backgroundTint="#FF6E6E" />
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_below="@id/srch_btn_name"
             android:layout_alignParentRight="true"
             android:layout_marginTop="5dp"
@@ -78,14 +108,26 @@
             android:text="Search author"
             app:backgroundTint="#FF6E6E" />
 
-    </RelativeLayout>
+        <Spinner
+            android:id="@+id/spinnerTypeSearch"
+            android:layout_width="131dp"
+            android:layout_height="40dp"
+            android:layout_below="@+id/searchNameAuthorBook"
+            android:layout_marginStart="21dp"
+            android:layout_marginLeft="21dp"
+            android:layout_marginTop="9dp"
+            android:layout_toEndOf="@+id/srch_type"
+            android:layout_toRightOf="@+id/srch_type" />
 
+
+    </RelativeLayout>
 
     <ListView
         android:id="@+id/listViewSearchBook"
         android:layout_width="match_parent"
-        android:layout_height="503dp"
+        android:layout_height="match_parent"
         android:layout_below="@id/rl_search"
+        android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         tools:layout_editor_absoluteY="126dp" />

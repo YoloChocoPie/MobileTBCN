@@ -5,9 +5,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -27,6 +29,7 @@ public class Search_Book extends AppCompatActivity {
     List_all_book listBookAdapter;
     Database database;
     BookController bookController;
+    Spinner spinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +40,27 @@ public class Search_Book extends AppCompatActivity {
 
         database = new Database(this, "ManagementBook.sqlite", null, 1);
         bookController = new BookController(database);
+
+        spinner = (Spinner) findViewById(R.id.spinnerTypeSearch);
+
+        ArrayList<String> arraycate = new ArrayList<String>();
+        arraycate.add("Novel");
+        arraycate.add("Adventure");
+        arraycate.add("Mystery");
+        arraycate.add("Fantasy");
+        arraycate.add("Historical Fiction");
+        arraycate.add("Horror");
+        arraycate.add("Literary Fiction");
+        arraycate.add("Romance");
+        arraycate.add("Sci-Fi");
+        arraycate.add("Biographies");
+        arraycate.add("Autobiographies");
+        arraycate.add("Essays");
+        arraycate.add("Self-Help");
+
+        ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line,arraycate);
+
+        spinner.setAdapter(arrayAdapter);
 
         back_icon = findViewById(R.id.back_icon);
         back_icon.setOnClickListener(new View.OnClickListener() {
@@ -92,6 +116,15 @@ public class Search_Book extends AppCompatActivity {
         editText.getText().clear();
         mappingData();
     }
+
+    public void onClickSearchByType(View view) {
+
+        listView = findViewById(R.id.listViewSearchBook);
+        bookArrayList = new ArrayList<>();
+        bookArrayList = bookController.searchTypeBook(spinner.getSelectedItem().toString().trim());
+        mappingData();
+    }
+
 
 
 }

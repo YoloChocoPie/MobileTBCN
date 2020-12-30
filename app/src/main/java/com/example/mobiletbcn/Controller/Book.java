@@ -11,4 +11,5 @@ public interface Book {
     void deleteBookById(int id);
     List searchNameBook(String name);
     List searchAuthorBook(String name);
+    List searchTypeBook(String type);
 }
