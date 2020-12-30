@@ -12,9 +12,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar">
-        <activity android:name=".Profile"></activity>
+        <activity android:name=".PasswordActivity_forget"></activity>
+        <activity android:name=".ResetActivity_forget" />
+        <activity android:name=".TypeActivity" />
+        <activity android:name=".AuthorActivity" />
+        <activity android:name=".Borrow_List" />
+        <activity android:name=".Profile" />
         <activity android:name=".DetailEditUser" />
-<!--        <activity android:name=".List_all_user" />-->
         <activity android:name=".ListUser_frame" />
         <activity android:name=".Edit_Book" />
         <activity android:name=".DetailEditBook" />
@@ -36,6 +40,8 @@
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
+
+        <receiver android:name=".ReminderBroadcast" />
     </application>
 
 </manifest>
