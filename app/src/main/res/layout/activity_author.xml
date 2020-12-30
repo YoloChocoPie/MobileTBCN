@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AuthorActivity">
+
+    <Button
+        android:id="@+id/back_icon3"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:background="@drawable/ic_baseline_arrow_back_24"
+        app:backgroundTint="@color/colorPrimaryDark"
+        app:iconTint="@android:color/black"
+        android:layout_margin="10dp"/>
+
+    <TextView
+        android:id="@+id/tvDanhSachTacPham"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:text="ListAllAuthorBook"
+        android:textSize="30sp"
+        android:layout_below="@id/rlout"
+        android:layout_centerHorizontal="true"/>
+
+    <ListView
+        android:id="@+id/lvBookByAuthor"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/tvDanhSachTacPham"/>
+
+    <RelativeLayout
+        android:id="@+id/rlout"
+        android:layout_width="408dp"
+        android:layout_height="98dp"
+        android:layout_below="@id/back_icon3"
+        android:layout_marginBottom="32dp">
+
+        <TextView
+            android:id="@+id/tvAuthorName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="21dp"
+            android:layout_marginLeft="21dp"
+            android:layout_marginTop="26dp"
+            android:layout_marginBottom="24dp"
+            android:background="@drawable/ctr_bg"
+            android:text="Author: "
+            android:textColor="@color/design_default_color_background"
+            android:textSize="36sp" />
+
+        <TextView
+            android:id="@+id/txtAuthorName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="26dp"
+            android:layout_marginEnd="135dp"
+            android:layout_marginRight="135dp"
+            android:layout_marginBottom="24dp"
+            android:text="Name"
+            android:textSize="36sp" />
+    </RelativeLayout>
+
+</RelativeLayout>
