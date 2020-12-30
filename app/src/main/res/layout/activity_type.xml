@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TypeActivity">
+
+    <Button
+        android:id="@+id/back_icon4"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginBottom="32dp"
+        android:background="@drawable/ic_baseline_arrow_back_24"
+        app:backgroundTint="@color/colorPrimaryDark"
+        app:iconTint="@android:color/black"
+        android:layout_margin="10dp"/>
+
+    <TextView
+        android:id="@+id/tvDanhSachTheLoai"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="ListAllTypeBook"
+        android:textSize="30sp"
+        android:layout_below="@id/relativeLayout2"
+        android:layout_centerHorizontal="true"/>
+
+    <ListView
+        android:id="@+id/lvBookByType"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/tvDanhSachTheLoai"/>
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="95dp"
+        android:layout_marginBottom="24dp"
+        android:layout_below="@id/back_icon4">
+
+        <TextView
+            android:id="@+id/tvTypeBook"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="42dp"
+            android:layout_marginLeft="42dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/ctr_bg"
+            android:text="Type "
+            android:textColor="@color/design_default_color_background"
+            android:textSize="35sp" />
+
+        <TextView
+            android:id="@+id/txtTypeBook"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="119dp"
+            android:layout_marginRight="119dp"
+            android:layout_marginBottom="20dp"
+            android:text="Name"
+            android:textSize="36sp" />
+    </RelativeLayout>
+</RelativeLayout>
