@@ -117,4 +117,28 @@ public class BookController implements Book {
         }
         return bookList;
     }
+
+    @Override
+    public List searchTypeBook(String type) {
+        Cursor cursor = database.getData("SELECT * FROM Book WHERE type LIKE '" + type + "' " +
+                "OR type LIKE '%" + type + "%' " +
+                "OR type LIKE '%" + type + "' " +
+                "OR type LIKE '" + type + "%' " +
+                "OR type LIKE ' " + type + " '; ");
+
+        List<com.example.mobiletbcn.model.Book> bookList = new ArrayList<>();
+        while (cursor.moveToNext()) {
+            com.example.mobiletbcn.model.Book book = new com.example.mobiletbcn.model.Book();
+            book.setId(cursor.getInt(0));
+            book.setName(cursor.getString(1));
+            book.setAuthor(cursor.getString(2));
+            book.setType(cursor.getString(3));
+            book.setQuantity(cursor.getString(4));
+            book.setImage(cursor.getBlob(5));
+            book.setDescription(cursor.getString(6));
+
+            bookList.add(book);
+        }
+        return bookList;
+    }
 }

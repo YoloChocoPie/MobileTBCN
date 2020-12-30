@@ -80,4 +80,24 @@ public class UserController implements User {
             return false;
         }
     }
+
+    public boolean checkUserByUserName(String userName) {
+        Cursor cursor = database.getData("SELECT * FROM User WHERE userName = '" + userName +"'");
+        com.example.mobiletbcn.model.User user = new com.example.mobiletbcn.model.User();
+        while (cursor.moveToNext()) {
+            user.setId(cursor.getInt(0));
+            user.setFullName(cursor.getString(1));
+            user.setRole(cursor.getString(2));
+            user.setUserName(cursor.getString(3));
+            user.setPassword(cursor.getString(4));
+            user.setcfpass(cursor.getString(5));
+        }
+        if (user.getId() != 0) {
+            KeepInformation.setIdUser(user.getId());
+            KeepInformation.setRole(user.getRole());
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

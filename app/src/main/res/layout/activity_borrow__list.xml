@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Borrow_List">
+
+    <Button
+        android:id="@+id/borrow_back_icon"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/ic_baseline_arrow_back_24"
+        app:backgroundTint="@color/colorPrimaryDark"
+        app:iconTint="@android:color/black"/>
+
+    <TextView
+        android:id="@+id/txtborrow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="93dp"
+        android:layout_marginTop="10dp"
+        android:text="My borrow list"
+        android:textSize="35dp"
+        android:layout_below="@id/borrow_back_icon"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/Maincolor"/>
+
+    <ListView
+        android:id="@+id/listBooking"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/txtborrow"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="126dp" />
+
+</RelativeLayout>

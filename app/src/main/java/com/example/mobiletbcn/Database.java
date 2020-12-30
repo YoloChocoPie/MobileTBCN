@@ -1,10 +1,12 @@
 package com.example.mobiletbcn;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.database.sqlite.SQLiteStatement;
+import android.view.View;
 
 import androidx.annotation.Nullable;
 
@@ -15,6 +17,7 @@ public class Database extends SQLiteOpenHelper {
     public Database(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
     }
+
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
@@ -99,6 +102,17 @@ public class Database extends SQLiteOpenHelper {
 
 
         sqLiteStatement.executeInsert();
+    }
+
+    public Boolean updateuser(String username ,String password) {
+        SQLiteDatabase database = getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("password",password);
+        long result = database.update("User", contentValues,"username = ?",new String[] {username});
+        if (result ==1) return false;
+        else
+            return true;
+
     }
 
     // select data
